@@ -1,0 +1,6 @@
+HarryPotter;2001;Engleza;10
+Heroes;2003;Engleza;12
+Filantropica;2002;Romana;7
+Stapanul Inelelor;2006;Engleza;12
+Noah;2013;Engleza;15
+La vie en rose;2007;Franceza;14
