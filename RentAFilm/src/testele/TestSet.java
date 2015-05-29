@@ -32,7 +32,7 @@ public class TestSet {
 	public void testAnAparitie() {
     Film film = new Film("Ciuleandra",1970,"Romana",12);
     film.getLimba();
-    assertTrue(film.getLimba() == "Romana");
+    assertTrue(film.getLimba() == "Rmana");
 	}
 	
 	

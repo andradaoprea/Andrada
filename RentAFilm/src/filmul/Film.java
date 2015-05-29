@@ -45,4 +45,13 @@ public class Film {
 		this.pret = 0;
 	}
 	
+	public boolean FilmVechiNou(int an_aparitie){
+		if(an_aparitie>2010)
+		{
+			System.out.println("Este film nou");
+			return true;
+		}
+		else
+			return false;
+	}
 }

@@ -1,14 +1,18 @@
 package filmul;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Inchiriere {
 
 	public int id_inchiriere;
 	public ArrayList<Film> filmeInchiriate;
+
+
 	public String data_inchiriere;
 	public String data_returnare;
 	public String data_returnare_reala;
@@ -82,16 +86,42 @@ public class Inchiriere {
 	public void setPret_final(double pret_final) {
 		this.pret_final = pret_final;
 	}
-
+	
+	public Inchiriere(int id_inchiriere, ArrayList<Film> filmeInchiriate,
+			String data_inchiriere, String data_returnare,
+			String data_returnare_reala, Client cl, double pret_final) {
+		super();
+		this.id_inchiriere = id_inchiriere;
+		this.filmeInchiriate = filmeInchiriate;
+		this.data_inchiriere = data_inchiriere;
+		this.data_returnare = data_returnare;
+		this.data_returnare_reala = data_returnare_reala;
+		this.cl = cl;
+		this.pret_final = pret_final;
+	}
 
 	public void CalculDataReturnare(int zile){
 		Date dd=null;
 		Date ddd=null;
+		Date d1= null;
 		try{
 			dd = format.parse(this.data_inchiriere);
 			long d = dd.getTime() + zile*(24*60*60*1000);
 			ddd = new Date(d);
-			this.data_returnare = ddd.toString();
+			
+			Calendar cal = Calendar.getInstance();
+		    cal.setTime(ddd);
+		    String month;
+		    if (cal.get(Calendar.MONTH) < 10)
+		    	month = "0" + (cal.get(Calendar.MONTH) + 1);
+		    else
+		    	month = (cal.get(Calendar.MONTH) + 1) + "";
+		    String formatedDate = month + "/" + 
+		            cal.get(Calendar.DATE) + 
+		            "/" + cal.get(Calendar.YEAR);
+
+			
+		    this.data_returnare = formatedDate;
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -142,7 +172,7 @@ public class Inchiriere {
 		double pret_fidelitate = AplicareFidelitate(procent_fidelitate,pret_initial);
 		double penalizare = CalculPenalizare(pret_penalizare);
 		
-		this.pret_final = pret_initial - (pret_fidelitate + penalizare);
+		this.pret_final = pret_fidelitate + penalizare;
 		
 	}
 	

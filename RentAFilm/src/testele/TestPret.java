@@ -14,8 +14,8 @@ public class TestPret {
 		Inchiriere i = new Inchiriere();
 		Client cl = new Client("Ion",true);
 		i.setCliente(cl);
-		double rezultat=i.AplicareFidelitate(0.1, 12);
-		assertTrue(rezultat == 11.988);
+		double rezultat=i.AplicareFidelitate(10, 12);
+		assertTrue(rezultat == 10.8);
 	}
 
 }
